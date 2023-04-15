@@ -1,0 +1,16 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb",
+        "airbnb-typescript"
+    ],
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "env": {
+        "browser": true
+    },
+} 
