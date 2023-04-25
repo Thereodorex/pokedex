@@ -6,12 +6,15 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
   entry: {
     // index: ['babel-polyfill', 'src/index.js'],
-    main: path.resolve(__dirname, 'src/index.tsx'),
+    main: path.resolve(__dirname, './src/index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'webpack_build/'),
     // publicPath: "/",
     filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [
@@ -30,17 +33,25 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        exclude: /(node_modules|bower_components)/,
-        use: ['style-loader', 'css-loader'],
+        exclude: /(node_modules)/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
-    new ESLintPlugin({
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    }),
     new Dotenv({
       path: './.env',
+    }),
+    new ESLintPlugin({
+      err
     }),
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',
@@ -51,10 +62,9 @@ module.exports = {
   ],
   mode: 'development',
   devServer: {
-    static: path.join(__dirname, './dist'),
+    // static: path.join(__dirname, './dist'),
     compress: true,
     port: 3000,
-    // сообщим dev-серверу, что в проекте используется hmr
     hot: true,
   },
 };
