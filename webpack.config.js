@@ -9,7 +9,7 @@ module.exports = {
     main: path.resolve(__dirname, './src/index.tsx'),
   },
   output: {
-    path: path.resolve(__dirname, 'webpack_build/'),
+    path: path.resolve(__dirname, 'build/'),
     // publicPath: "/",
     filename: 'bundle.js',
   },
@@ -50,9 +50,7 @@ module.exports = {
     new Dotenv({
       path: './.env',
     }),
-    new ESLintPlugin({
-      err
-    }),
+    new ESLintPlugin(),
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',
       template: path.resolve(__dirname, 'public/index.html'), // шаблон
@@ -61,10 +59,10 @@ module.exports = {
     }),
   ],
   mode: 'development',
-  devServer: {
-    // static: path.join(__dirname, './dist'),
-    compress: true,
-    port: 3000,
-    hot: true,
-  },
+  // devServer: {
+  //   // static: path.join(__dirname, './dist'),
+  //   compress: true,
+  //   port: 3000,
+  //   hot: true,
+  // },
 };
