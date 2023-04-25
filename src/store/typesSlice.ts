@@ -63,5 +63,4 @@ const pokemonsSlice = createSlice({
     },
 });
 
-// export const { increment, decrement, incrementByAmount } = pokemonsSlice.actions;
 export default pokemonsSlice.reducer;

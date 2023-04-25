@@ -44,7 +44,6 @@ const pokemonSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(fetchPokemon.pending, () => ({
             status: Status.loading,
             data: null,

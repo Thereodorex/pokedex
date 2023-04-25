@@ -30,7 +30,6 @@ const pokemonsSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(fetchPokemons.pending, () => ({
             status: Status.loading,
             data: [],
@@ -49,5 +48,4 @@ const pokemonsSlice = createSlice({
     },
 });
 
-// export const { increment, decrement, incrementByAmount } = pokemonsSlice.actions;
 export default pokemonsSlice.reducer;
